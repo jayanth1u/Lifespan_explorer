@@ -1,1 +1,99 @@
-sdfg
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeSpan Explorer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-globe-americas"></i> LifeSpan Explorer</h1>
+            <p class="subtitle">Discover life expectancy trends over the years by country</p>
+        </header>
+
+        <div class="controls-section">
+            <div class="control-group">
+                <label for="country-select">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Select a country:
+                </label>
+                <div class="select-wrapper">
+                    <select id="country-select">
+                        <option value="">--Choose a country--</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-icon"></i>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading" style="display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                Loading data...
+            </div>
+        </div>
+
+        <div class="chart-section" id="chart-section" style="display: none;">
+            <div class="chart-header">
+                <h2 id="chart-title">Life Expectancy Trends</h2>
+                <div class="chart-info" id="chart-info"></div>
+            </div>
+            <div class="chart-container">
+                <canvas id="life-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats-section" id="stats-section" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="avg-life-expectancy">--</div>
+                        <div class="stat-label">Average Life Expectancy</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="trend-change">--</div>
+                        <div class="stat-label">Change Over Time</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="avg-gdp">--</div>
+                        <div class="stat-label">Average GDP</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="avg-schooling">--</div>
+                        <div class="stat-label">Average Schooling</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Data visualization of global life expectancy trends</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
